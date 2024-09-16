@@ -1,0 +1,51 @@
+@import url(./configs/reset.css);
+@import url(./configs/colors.css);
+@import url(./configs/fonts.css);
+@import url(./header.css);
+@import url(./nav.css);
+@import url(./asides/deposit.css);
+@import url(./sections/game-section.css);
+@import url(./footer.css);
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--darkGrey);
+  color: #fff;
+}
+
+main{
+  width: 90%;
+  margin: 0 auto;
+}
+
+main h2 {
+  color: var(--darkYellow);
+  text-align: center;
+  margin-bottom: 40px;
+  margin: 3rem 0 4rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 768px) {
+  #header-logged {
+    flex-direction: column;
+  }
+
+  .games-section {
+    width: 80%;
+    gap: 5rem;
+    grid-template-columns: repeat(2, 10rem); /* Ajusta a largura das colunas */
+  }
+}
+
+@media screen and (max-width: 550px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+}

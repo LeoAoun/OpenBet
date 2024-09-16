@@ -1,0 +1,10 @@
+footer {
+  background-color: var(--black);
+  color: var(--darkYellow);
+  text-align: center;
+
+  width: 100%;
+  padding: 20px;
+  
+  margin-top: 10rem;
+}

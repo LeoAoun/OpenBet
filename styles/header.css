@@ -1,0 +1,89 @@
+#header-not-logged,
+#header-logged {
+  background-color: var(--black);
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  color: #f39c12;
+  font-size: 3rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+#header-not-logged .buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+#header-not-logged #login {
+  cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#header-not-logged #register {
+  cursor: pointer;
+  background-color: var(--red);
+  color: #fff;
+  font-weight: 600;
+
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+
+  transition: ease-in-out 0.2s background-color, ease-in-out 0.1s transform;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+#header-logged {
+  gap: 1.5rem;
+}
+
+#header-logged #user-balance {
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+#header-logged .buttons {
+  gap: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+#header-logged .buttons button {
+  cursor: pointer;
+  background-color: var(--red);
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 600;
+  padding: 10px 20px;
+  text-decoration: none;
+
+  transition: ease-in-out 0.2s background-color, ease-in-out 0.1s transform;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+#header-logged .buttons #logout {
+  background-color: var(--grey);
+}

@@ -1,0 +1,24 @@
+nav {
+  background-color: var(--grey);
+  padding: 15px;
+  gap: 3rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a {
+  color: var(--darkYellow);
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 600;
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--red);
+  }
+}

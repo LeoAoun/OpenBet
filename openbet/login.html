@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/login.css" />
+    <title>OpenBet</title>
+  </head>
+  <body>
+    <header>
+      <h1>OpenBet</h1>
+    </header>
+
+    <main>
+      <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form" action="/login">
+          <label for="username">Nome de usuário</label>
+          <input type="text" id="login-username" name="username" required />
+
+          <label for="password">Senha</label>
+          <input type="password" id="login-password" name="password" required />
+
+          <button type="submit">Entrar</button>
+        </form>
+        <div class="links">
+          <a href="./register.html">Ainda não tem uma conta? Registre-se</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script defer src="../scripts/login.js"></script>
+  </body>
+</html>

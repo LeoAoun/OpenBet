@@ -1,0 +1,91 @@
+.games-section {
+  width: 80%;
+  gap: 5rem;
+  margin: 0 auto;
+  
+  display: grid;
+  grid-template-columns: repeat(3, 10rem); /* Ajusta a largura das colunas */
+  justify-content: center;
+}
+
+.games-section #game-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  background-color: #fff;
+
+  width: 100%;
+  height: 10rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+
+  overflow: hidden;
+  position: relative;
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  &:hover #game-card-hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.games-section #game-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: ease-in-out 0.3s transform;
+}
+
+.games-section #game-card #game-card-hover {
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: ease-in-out 0.3s opacity;
+}
+
+.games-section #game-card #game-card-hover .title {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.games-section #game-card #game-card-hover .play {
+  background-color: var(--red);
+
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.games-section #game-card #game-card-hover img {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.games-section #game-card #game-card-hover .openbet {
+  color: var(--lightGrey);
+  font-size: 0.8rem;
+  font-weight: 500;
+}

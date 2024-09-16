@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <title>OpenBet</title>
+  </head>
+  <body>
+    <header id="header-not-logged">
+      <h1>OpenBet</h1>
+      <div class="buttons">
+        <button id="login"><a href="./login.html">Entrar</a></button>
+        <button id="register"><a href="./register.html">Registrar</a></button>
+      </div>
+    </header>
+
+    <header id="header-logged">
+      <h1>OpenBet</h1>
+      <span id="user-balance"></span>
+      <div class="buttons">
+        <button id="deposit-button">Depósito</button>
+        <button id="withdraw-button">Saque</button>
+        <button id="logout">Sair</button>
+      </div>
+    </header>
+
+    <nav>
+      <a href="#">Caça-níquel</a>
+      <a href="#">Roleta</a>
+      <a href="#">Blackjack</a>
+      <a href="#">Flappy Bird</a>
+      <a href="#">Snake</a>
+    </nav>
+
+    <main>
+      <h2>Escolha seu jogo favorito e aposte!</h2>
+      <section class="games-section">
+        <div id="game-card">
+          <img class="game-card-img" src="../assets/images/slot-machine.png" />
+          <div id="game-card-hover">
+            <span class="title">Caça-Níquel</span>
+            <div class="play"><img src="../assets/images/play.png" /></div>
+            <span class="openbet">OpenBet</span>
+          </div>
+        </div>
+
+        <div id="game-card">
+          <img
+            class="game-card-img"
+            src="../assets/images/roullete-icon.avif"
+          />
+          <div id="game-card-hover">
+            <span class="title">Roleta</span>
+            <div class="play"><img src="../assets/images/play.png" /></div>
+            <span class="openbet">OpenBet</span>
+          </div>
+        </div>
+
+        <div id="game-card">
+          <img
+            class="game-card-img"
+            src="../assets/images/black-jack-icon.jpg"
+          />
+          <div id="game-card-hover">
+            <span class="title">Black Jack</span>
+            <div class="play"><img src="../assets/images/play.png" /></div>
+            <span class="openbet">OpenBet</span>
+          </div>
+        </div>
+
+        <div id="game-card">
+          <img
+            class="game-card-img"
+            src="../assets/images/flappy-bird-icon.jpg"
+          />
+          <div id="game-card-hover">
+            <span class="title">Flappy Bird</span>
+            <div class="play"><img src="../assets/images/play.png" /></div>
+            <span class="openbet">OpenBet</span>
+          </div>
+        </div>
+
+        <div id="game-card">
+          <img class="game-card-img" src="../assets/images/snake-game.png" />
+          <div id="game-card-hover">
+            <span class="title">Snake</span>
+            <div class="play"><img src="../assets/images/play.png" /></div>
+            <span class="openbet">OpenBet</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside id="deposit-background">
+      <form id="deposit-form">
+        <h2>Depósito</h2>
+        <label for="deposit-amount">Valor do depósito:</label>
+        <div>
+          <input type="text" id="deposit-amount" placeholder="R$ 0,00" />
+          <div class="buttons">
+            <button type="submit" id="confirm-deposit">Confirmar</button>
+            <button type="button" id="close-deposit-modal">Fechar</button>
+          </div>
+        </div>
+      </form>
+    </aside>
+
+    <footer>
+      <p>&copy; 2024 OpenBet - Todos os direitos reservados</p>
+    </footer>
+
+    <script type="module" src="../scripts/global.js"></script>
+    <script type="module" src="../scripts/header.js"></script>
+    <script type="module" src="../scripts/deposit.js"></script>
+  </body>
+</html>
