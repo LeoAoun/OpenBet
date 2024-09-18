@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-.games-section #game-card {
+.games-section .game-card {
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -28,14 +28,14 @@
     transform: scale(1.1);
   }
 
-  &:hover #game-card-hover {
+  &:hover .game-card-hover {
     background-color: rgba(0, 0, 0, 0.8);
     opacity: 1;
     visibility: visible;
   }
 }
 
-.games-section #game-card img {
+.games-section .game-card img {
   display: block;
   width: 100%;
   height: 100%;
@@ -44,7 +44,7 @@
   transition: ease-in-out 0.3s transform;
 }
 
-.games-section #game-card #game-card-hover {
+.games-section .game-card .game-card-hover {
   width: 100%;
   height: 100%;
   gap: 1rem;
@@ -61,13 +61,13 @@
   transition: ease-in-out 0.3s opacity;
 }
 
-.games-section #game-card #game-card-hover .title {
+.games-section .game-card .game-card-hover .title {
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
 }
 
-.games-section #game-card #game-card-hover .play {
+.games-section .game-card .game-card-hover .play {
   background-color: var(--red);
 
   width: 2.5rem;
@@ -79,12 +79,12 @@
   justify-content: center;
 }
 
-.games-section #game-card #game-card-hover img {
+.games-section .game-card .game-card-hover img {
   width: 0.9rem;
   height: 0.9rem;
 }
 
-.games-section #game-card #game-card-hover .openbet {
+.games-section .game-card .game-card-hover .openbet {
   color: var(--lightGrey);
   font-size: 0.8rem;
   font-weight: 500;

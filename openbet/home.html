@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/main.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/favicon.png"
+      type="image/x-icon"
+    />
     <title>OpenBet</title>
   </head>
   <body>
@@ -26,7 +31,7 @@
     </header>
 
     <nav>
-      <a href="#">Caça-níquel</a>
+      <a href="../games/slot-machine/slot-machine.html">Caça-níquel</a>
       <a href="#">Roleta</a>
       <a href="#">Blackjack</a>
       <a href="#">Flappy Bird</a>
@@ -36,56 +41,72 @@
     <main>
       <h2>Escolha seu jogo favorito e aposte!</h2>
       <section class="games-section">
-        <div id="game-card">
-          <img class="game-card-img" src="../assets/images/slot-machine.png" />
-          <div id="game-card-hover">
+        <div id="game-card-slot-machine" class="game-card">
+          <img
+            class="game-card-img"
+            src="../assets/images/games-section/games/slot-machine.png"
+          />
+          <div class="game-card-hover">
             <span class="title">Caça-Níquel</span>
-            <div class="play"><img src="../assets/images/play.png" /></div>
+            <div class="play">
+              <img src="../assets/images/games-section/play.png" />
+            </div>
             <span class="openbet">OpenBet</span>
           </div>
         </div>
 
-        <div id="game-card">
+        <div class="game-card">
           <img
             class="game-card-img"
-            src="../assets/images/roullete-icon.avif"
+            src="../assets/images/games-section/games/roullete-icon.avif"
           />
-          <div id="game-card-hover">
+          <div class="game-card-hover">
             <span class="title">Roleta</span>
-            <div class="play"><img src="../assets/images/play.png" /></div>
+            <div class="play">
+              <img src="../assets/images/games-section/play.png" />
+            </div>
             <span class="openbet">OpenBet</span>
           </div>
         </div>
 
-        <div id="game-card">
+        <div class="game-card">
           <img
             class="game-card-img"
-            src="../assets/images/black-jack-icon.jpg"
+            src="../assets/images/games-section/games/black-jack-icon.jpg"
           />
-          <div id="game-card-hover">
+          <div class="game-card-hover">
             <span class="title">Black Jack</span>
-            <div class="play"><img src="../assets/images/play.png" /></div>
+            <div class="play">
+              <img src="../assets/images/games-section/play.png" />
+            </div>
             <span class="openbet">OpenBet</span>
           </div>
         </div>
 
-        <div id="game-card">
+        <div class="game-card">
           <img
             class="game-card-img"
-            src="../assets/images/flappy-bird-icon.jpg"
+            src="../assets/images/games-section/games/flappy-bird-icon.jpg"
           />
-          <div id="game-card-hover">
+          <div class="game-card-hover">
             <span class="title">Flappy Bird</span>
-            <div class="play"><img src="../assets/images/play.png" /></div>
+            <div class="play">
+              <img src="../assets/images/games-section/play.png" />
+            </div>
             <span class="openbet">OpenBet</span>
           </div>
         </div>
 
-        <div id="game-card">
-          <img class="game-card-img" src="../assets/images/snake-game.png" />
-          <div id="game-card-hover">
+        <div class="game-card">
+          <img
+            class="game-card-img"
+            src="../assets/images/games-section/games/snake-game.png"
+          />
+          <div class="game-card-hover">
             <span class="title">Snake</span>
-            <div class="play"><img src="../assets/images/play.png" /></div>
+            <div class="play">
+              <img src="../assets/images/games-section/play.png" />
+            </div>
             <span class="openbet">OpenBet</span>
           </div>
         </div>
@@ -113,5 +134,6 @@
     <script type="module" src="../scripts/global.js"></script>
     <script type="module" src="../scripts/header.js"></script>
     <script type="module" src="../scripts/deposit.js"></script>
+    <script src="../scripts/go-to-game.js"></script>
   </body>
 </html>

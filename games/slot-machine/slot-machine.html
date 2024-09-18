@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="shortcut icon"
+      href="../../assets/images/favicon.png"
+      type="image/x-icon"
+    />
+    <title>Caça-Níquel</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>OpenBet</h1>
+      <div>
+        <span id="user-balance"></span>
+        <button id="exit-to-home">Voltar</button>
+      </div>
+    </header>
+
+    <main>
+      <span id="status">Gire!</span>
+      <div class="slots">
+        <img id="slot1" src="res/fruits/fruits.png" />
+        <img id="slot2" src="res/fruits/fruits.png" />
+        <img id="slot3" src="res/fruits/fruits.png" />
+      </div>
+      <div class="bet">
+        <div>
+          <label for="input-bet">Insira o valor desejado:</label>
+          <input placeholder="R$ 0" id="bet-input" type="text" />
+        </div>
+        <button id="play">Gire!</button>
+      </div>
+    </main>
+
+    <button id="open-win-table-button">Tabela de ganhos</button>
+
+    <aside id="win-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Combinação</th>
+            <th>Chance de Vitória</th>
+            <th>Multiplicador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img src="res/fruits/bananas.png" />
+              <img src="res/fruits/bananas.png" />
+              <img src="res/fruits/bananas.png" />
+            </td>
+            <td>&asymp; 3,7%</td>
+            <td>5x</td>
+          </tr>
+
+          <tr>
+            <td>
+              <img src="res/fruits/grapes.png" />
+              <img src="res/fruits/grapes.png" />
+              <img src="res/fruits/grapes.png" />
+            </td>
+            <td>&asymp; 1,89%</td>
+            <td>10x</td>
+          </tr>
+
+          <tr>
+            <td>
+              <img src="res/fruits/orange.png" />
+              <img src="res/fruits/orange.png" />
+              <img src="res/fruits/orange.png" />
+            </td>
+            <td>&asymp; 0,8%</td>
+            <td>25x</td>
+          </tr>
+
+          <tr>
+            <td>
+              <img src="res/fruits/avocado.png" />
+              <img src="res/fruits/avocado.png" />
+              <img src="res/fruits/avocado.png" />
+            </td>
+            <td>&asymp; 0,23%</td>
+            <td>50x</td>
+          </tr>
+
+          <tr>
+            <td>
+              <img src="res/fruits/strawberry.png" />
+              <img src="res/fruits/strawberry.png" />
+              <img src="res/fruits/strawberry.png" />
+            </td>
+            <td>&asymp; 0,029%</td>
+            <td>100x</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button id="close-win-table-button">Fechar</button>
+    </aside>
+
+    <audio id="audio-spin" src="res/sounds/spin.mp3"></audio>
+    <audio id="audio-coin" src="res/sounds/coin.mp3"></audio>
+    <audio id="audio-win" src="res/sounds/win.mp3"></audio>
+    <audio id="audio-lose" src="res/sounds/lose.mp3"></audio>
+
+    <script defer src="./slot-machine.js"></script>
+  </body>
+</html>
