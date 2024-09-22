@@ -13,7 +13,7 @@ body {
   color: #fff;
 }
 
-main{
+main {
   width: 90%;
   margin: 0 auto;
 }
@@ -24,10 +24,6 @@ main h2 {
   margin-bottom: 40px;
   margin: 3rem 0 4rem;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-}
-
-@media screen and (max-width: 1200px) {
-
 }
 
 @media screen and (max-width: 768px) {
@@ -47,5 +43,4 @@ main h2 {
     flex-wrap: wrap;
     gap: 1.5rem;
   }
-
 }

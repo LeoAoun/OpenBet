@@ -28,6 +28,7 @@ header {
 }
 
 header h1 {
+  font-family: "Poppins", sans-serif;
   color: #f39c12;
   font-size: 3rem;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
@@ -42,7 +43,6 @@ header > div {
 header > div #user-balance {
   color: #fff;
   font-size: 1.5rem;
-  font-weight: 600;
 }
 
 #exit-to-home {
@@ -100,7 +100,7 @@ main #status {
 
 main .slots {
   background-color: #fafafa;
-  
+
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;

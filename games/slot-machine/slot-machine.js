@@ -1,11 +1,22 @@
+import {
+  userLogged,
+  updateLocalStorage,
+  updateUserBalance,
+} from "../../scripts/global.js";
+
+// DOM elements
 const userBalance = document.getElementById("user-balance");
 const exitToHome = document.getElementById("exit-to-home");
+
+// Slot elements
 const status = document.getElementById("status");
+const bet = document.getElementById("play");
+const betInput = document.getElementById("bet-input");
+
+// Win table elements
 const openWinTable = document.getElementById("open-win-table-button");
 const winTable = document.getElementById("win-table");
 const closeWinTable = document.getElementById("close-win-table-button");
-const bet = document.getElementById("play");
-const betInput = document.getElementById("bet-input");
 
 // Audios
 const audioWin = document.getElementById("audio-win");
@@ -19,21 +30,11 @@ audioLose.volume = 0.3;
 audioSpin.volume = 0.3;
 audioCoin.volume = 0.3;
 
-let doing = false;
+let doing = false; // Variable to control if the slot is spinning
 
-const numberOfFruits = 15;
+const numberOfFruits = 15; // Number of fruits in the slot machine
 
-const userLogged = () => {
-  const user = JSON.parse(localStorage.getItem("userLogged"));
-  return user ? user : null;
-};
-
-const updateUserBalance = () => {
-  const userData = userLogged();
-  userBalance.textContent =
-    "R$ " + userData.balance.toFixed(2).toLocaleString("pt-BR");
-};
-
+// Function to get the fruit name based on the index
 function getTileName(index) {
   switch (index) {
     case 1:
@@ -71,8 +72,9 @@ function getTileName(index) {
   }
 }
 
+// Function to play the slot machine
 function doSlot() {
-  if (doing) return;
+  if (doing) return; // If the slot is spinning, return
 
   let userData = userLogged();
   let currentBalance = userData.balance;
@@ -86,23 +88,26 @@ function doSlot() {
   } else if (betValue <= currentBalance) {
     doing = true;
 
-    const numChanges = 200;
+    const numChanges = 200; // Number of changes before the slot stops
+
+    // Random number of changes for each slot
     const numberSlot1 = numChanges + randomInt(1, numberOfFruits);
     const numberSlot2 =
       numChanges + 20 * (numberOfFruits / 2) + randomInt(1, numberOfFruits);
     const numberSlot3 =
       numChanges + 40 * (numberOfFruits / 2) + randomInt(1, numberOfFruits);
 
+    // Variables to control the slot
     let i1 = 0;
     let i2 = 0;
     let i3 = 0;
 
     status.innerHTML = "GIRANDO...";
 
-    // Play spin sound
-    audioSpin.loop = true;
-    audioSpin.play();
+    audioSpin.loop = true; // Activate loop for spin sound
+    audioSpin.play(); // Play spin sound
 
+    // Spin the slot
     const spin1 = setInterval(() => {
       updateSlot("slot1", i1++, numberSlot1);
       if (i1 >= numberSlot1) clearInterval(spin1);
@@ -118,10 +123,9 @@ function doSlot() {
       if (i3 >= numberSlot3) {
         clearInterval(spin3);
 
-        // Stop spin sound
-        audioSpin.loop = false;
-        audioSpin.pause();
-        audioSpin.currentTime = 0; // Reset the sound
+        audioSpin.loop = false; // Stop spin sound
+        audioSpin.pause(); // Pause spin sound
+        audioSpin.currentTime = 0; // Reset spin sound
 
         // After the slot stops, check if the user won
         const winned = testWin();
@@ -129,6 +133,7 @@ function doSlot() {
       }
     }, 10);
 
+    // Function to update the slot
     function updateSlot(id, counter, limit) {
       if (counter >= limit) return;
       const slotTile = document.getElementById(id);
@@ -137,7 +142,7 @@ function doSlot() {
       const newIndex = currentIndex === numberOfFruits ? 1 : currentIndex + 1;
       slotTile.dataset.index = newIndex;
 
-      const tileImage = `res/fruits/${getTileName(newIndex)}.png`;
+      const tileImage = `assets/fruits/${getTileName(newIndex)}.png`;
       slotTile.src = tileImage;
     }
   } else {
@@ -145,9 +150,11 @@ function doSlot() {
     return;
   }
 
-  updateUserBalance();
+  // Update the user balance in the DOM
+  updateUserBalance(userBalance);
 }
 
+// Function to check if the user won
 function testWin() {
   const slot1 = parseInt(document.getElementById("slot1").dataset.index);
   const slot2 = parseInt(document.getElementById("slot2").dataset.index);
@@ -172,6 +179,7 @@ function testWin() {
   }
 }
 
+// Function to process the result
 function processResult(winned, betValue, userData, currentBalance) {
   if (winned) {
     switch (slot1) {
@@ -200,22 +208,17 @@ function processResult(winned, betValue, userData, currentBalance) {
     userData.balance = currentBalance - betValue;
   }
 
-  // Update the userLogged in localStorage
-  localStorage.setItem("userLogged", JSON.stringify(userData));
-
-  // Update the user balance in the users object
-  let users = JSON.parse(localStorage.getItem("users"));
-  users[userData.username].balance = userData.balance;
-  localStorage.setItem("users", JSON.stringify(users));
-
-  doing = false;
-  updateUserBalance();
+  doing = false; // Set doing to false
+  updateLocalStorage(userData); // Update the user balance in localStorage
+  updateUserBalance(userBalance); // Update the user balance in the DOM
 }
 
+// Function to generate a random number between min and max
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// Exit to home page
 exitToHome.addEventListener("click", () => {
   window.location.href = "../../index.html";
 });
@@ -227,14 +230,18 @@ betInput.addEventListener("input", function (e) {
     "R$ " + (value ? parseInt(value, 10).toLocaleString("pt-BR") : "0");
 });
 
+// Open and close the win table
 openWinTable.addEventListener("click", () => {
   winTable.style.display = "flex";
 });
 
+// Close the win table
 closeWinTable.addEventListener("click", () => {
   winTable.style.display = "none";
 });
 
+// Play the slot machine
 bet.addEventListener("click", doSlot);
 
-updateUserBalance();
+// Update the user balance in the DOM
+updateUserBalance(userBalance);
