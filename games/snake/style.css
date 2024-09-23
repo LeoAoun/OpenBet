@@ -267,8 +267,6 @@ header #exit-to-home {
   padding: 1rem;
   border-radius: 0.5rem;
 }
-#end-game-aside #end-game-message-2 {
-}
 
 #end-game-aside .end-game-container {
   background-color: var(--red);

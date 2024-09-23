@@ -202,7 +202,6 @@ function processResult(winned, betValue, userData, currentBalance) {
         userData.balance = currentBalance + betValue * 1;
     }
 
-    userData.balance = currentBalance + betValue * 100;
     audioCoin.play(); // Play coin sound when win
   } else {
     userData.balance = currentBalance - betValue;
