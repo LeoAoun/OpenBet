@@ -40,7 +40,22 @@ audioFood.volume = 0.3;
 audioWin.volume = 0.3;
 audioLose.volume = 0.3;
 
-const box = 32;
+let box; // Size of the snake and food
+
+// Depending on the viewport, the box size will be different
+if (window.innerWidth < 576 || window.innerHeight < 700) {
+  box = 20;
+  console.log("1");
+} else if (window.innerWidth < 768 || window.innerHeight < 768) {
+  box = 30;
+  console.log("2");
+} else {
+  box = 30;
+  console.log("3");
+}
+
+canvas.width = 16 * box;
+canvas.height = 16 * box;
 
 const snake = [{ x: 8 * box, y: 8 * box }]; // Initial position of the snake
 let direction = "right"; // Initial direction of the snake
@@ -60,32 +75,81 @@ function createBG() {
 }
 
 // Create the snake
+let headSize = box; // Head size of the snake
+let eyeSize = headSize / 8; // Eye size of the snake
+
 function createSnake() {
   snake.forEach(({ x, y }, index) => {
-    // Toggle the color of the snake segments
     if (index === 0) {
-      context.fillStyle = "#0f0"; // Snake head color
-      context.fillRect(x, y, box, box);
+      context.fillStyle = "#0f0"; // Color of the snake head
+      context.fillRect(x, y, headSize, headSize);
 
-      // Draw the eyes of the snake head
+      // Draw the eyes of the snake
       context.fillStyle = "#000";
       context.beginPath();
       if (direction === "right") {
-        context.arc(x + 24, y + 8, 4, 0, Math.PI * 2); // Right eye
-        context.arc(x + 24, y + 24, 4, 0, Math.PI * 2); // Left eye
+        context.arc(
+          x + headSize * 0.75,
+          y + headSize * 0.25,
+          eyeSize,
+          0,
+          Math.PI * 2
+        ); // Right eye
+        context.arc(
+          x + headSize * 0.75,
+          y + headSize * 0.75,
+          eyeSize,
+          0,
+          Math.PI * 2
+        ); // Left eye
       } else if (direction === "left") {
-        context.arc(x + 8, y + 8, 4, 0, Math.PI * 2); // Right eye
-        context.arc(x + 8, y + 24, 4, 0, Math.PI * 2); // Left eye
+        context.arc(
+          x + headSize * 0.25,
+          y + headSize * 0.25,
+          eyeSize,
+          0,
+          Math.PI * 2
+        ); // Right eye
+        context.arc(
+          x + headSize * 0.25,
+          y + headSize * 0.75,
+          eyeSize,
+          0,
+          Math.PI * 2
+        ); // Left eye
       } else if (direction === "up") {
-        context.arc(x + 8, y + 8, 4, 0, Math.PI * 2); // Left eye
-        context.arc(x + 24, y + 8, 4, 0, Math.PI * 2); // Right eye
+        context.arc(
+          x + headSize * 0.25,
+          y + headSize * 0.25,
+          eyeSize,
+          0,
+          Math.PI * 2
+        ); // Left eye
+        context.arc(
+          x + headSize * 0.75,
+          y + headSize * 0.25,
+          eyeSize,
+          0,
+          Math.PI * 2
+        ); // Right eye
       } else if (direction === "down") {
-        context.arc(x + 8, y + 24, 4, 0, Math.PI * 2); // Left eye
-        context.arc(x + 24, y + 24, 4, 0, Math.PI * 2); // Right eye
+        context.arc(
+          x + headSize * 0.25,
+          y + headSize * 0.75,
+          eyeSize,
+          0,
+          Math.PI * 2
+        ); // Left eye
+        context.arc(
+          x + headSize * 0.75,
+          y + headSize * 0.75,
+          eyeSize,
+          0,
+          Math.PI * 2
+        ); // Right eye
       }
       context.fill();
     } else {
-      // Toggle the color of the snake segments
       context.fillStyle = index % 2 === 0 ? "#32a852" : "#2a7b32";
       context.fillRect(x, y, box, box);
     }
@@ -196,7 +260,7 @@ function startGameAfterBet() {
   betValue = betInput.value.replace(/\D/g, ""); // Remove non-numeric characters
   betValue = parseInt(betValue, 10); // Parse the bet value to integer
 
-  if (betValue === 0 || isNaN(betValue)) {
+  if (betValue === 0 || isNaN(betValue) || foodInput.value === "") {
     alert("Insira um valor para apostar!");
     return;
   } else if (betValue <= currentBalance) {
@@ -252,8 +316,7 @@ function endGame(isWin) {
       .toFixed(2)
       .toLocaleString("pt-BR")}!`;
     endGameAside.style.display = "flex"; // Show the end game screen
-  } 
-  else {
+  } else {
     audioLose.play(); // Play the lose sound
 
     userData.balance -= betValue; // Subtract the bet value from the balance
