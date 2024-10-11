@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../../assets/images/favicon.png"
+      type="image/png"
+    />
+    <link rel="stylesheet" href="flappy-bird.css" />
+    <title>Flappy Bird</title>
+  </head>
+  <body>
+    <header>
+      <h1>OpenBet</h1>
+      <div>
+        <span id="user-balance"></span>
+        <button id="exit-to-home">Voltar</button>
+      </div>
+    </header>
+
+    <main id="bet-container">
+      <h2>Flappy Bird</h2>
+      <label for="bet-input">Insira sua aposta:</label>
+      <input placeholder="R$ 0.00" type="text" id="bet-input" />
+      <label for="pipe-input">Quantos canos? (Mínimo 3)</label>
+      <input id="pipe-input" placeholder="3" type="number" min="3" />
+      <div class="buttons">
+        <button id="start-game-button">Iniciar Jogo</button>
+        <button id="open-how-to-play">Como jogar</button>
+      </div>
+    </main>
+  
+    <aside id="how-to-play-aside">
+      <div class="how-to-play-container">
+        <h2>Como jogar:</h2>
+        <ol>
+          <li>
+            Use a barra de espaço ou clique na tela para fazer o pássaro pular
+          </li>
+          <li>
+            O objetivo é ultrapassar a quantidade de canos que você escolher
+          </li>
+          <li>
+            A cada cano que o pássaro passar, a velocidade dele irá aumentar
+          </li>
+          <li>Se o pássaro bater em um cano, você perde!</li>
+          <li>
+            Se o pássaro ultrapassar a quantidade de canos escolhida, você
+            vence!
+          </li>
+          <li>
+            Cada cano ultrapassado aumenta o multiplicador do valor da sua
+            aposta em 0.01x
+          </li>
+          <li>
+            Exemplo: se o pássaro ultrapassar 3 canos, sua aposta será
+            multiplicada em 0.03x
+          </li>
+        </ol>
+        <button id="close-how-to-play">Fechar</button>
+      </div>
+    </aside>
+
+    <main id="flappy-bird-container">
+      <h2>Flappy Bird</h2>
+      <div class="score-container">
+        <div id="bestScore"></div>
+        <div id="currentScore"></div>
+      </div>
+      <canvas id="canvas" width="431px" height="600px"></canvas>
+    </main>
+
+    <aside id="end-game-aside">
+      <div class="end-game-container">
+        <h2>Fim de Jogo!</h2>
+        <span id="end-game-message-1"></span>
+        <span id="end-game-message-2"></span>
+        <button id="exit-to-flappy-bird-menu">Sair</button>
+      </div>
+    </aside>
+
+    <script type="module" defer src="flappy-bird.js"></script>
+  </body>
+</html>

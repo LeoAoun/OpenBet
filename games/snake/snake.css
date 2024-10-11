@@ -1,0 +1,311 @@
+@import url(../../styles/configs/reset.css);
+@import url(../../styles/configs/colors.css);
+@import url(../../styles/configs/fonts.css);
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--darkGrey);
+
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  background-color: var(--black);
+  text-align: center;
+
+  width: 100%;
+  gap: 2rem;
+  padding: 1rem 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  color: #f39c12;
+  font-size: 3rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+header > div {
+  gap: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+header > div #user-balance {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+header #exit-to-home {
+  cursor: pointer;
+  background-color: var(--grey);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+
+  padding: 1rem;
+  border-radius: 5px;
+
+  border: none;
+  text-align: center;
+
+  transition: all 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+#bet-container {
+  background-color: var(--grey);
+  width: 20rem;
+  padding: 20px;
+  gap: 1.5rem;
+  margin: auto 0;
+  border-radius: 10px;
+
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+}
+
+#bet-container h2 {
+  font-size: 2rem;
+  color: var(--red);
+}
+
+#bet-container label {
+  color: var(--lightGrey);
+  font-size: 1rem;
+}
+
+#bet-container #bet-input {
+  background-color: var(--darkGrey);
+  color: #fff;
+  outline: none;
+  text-indent: 0.5rem;
+  font-size: 1rem;
+
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+#bet-container span {
+  color: var(--lightGrey);
+}
+
+#bet-container #food-input {
+  background-color: var(--darkGrey);
+  color: #fff;
+  outline: none;
+  text-indent: 0.5rem;
+  font-size: 1rem;
+
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: none;
+  text-align: center;
+}
+
+#bet-container .buttons {
+  width: 100%;
+  gap: 1rem;
+
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+#bet-container #start-game-button {
+  cursor: pointer;
+  background-color: var(--green);
+  color: #fff;
+
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  flex: 1;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--darkGreen);
+  }
+}
+
+#bet-container #open-how-to-play {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: #fff;
+
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  flex: 1;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--darkBlue);
+  }
+}
+
+#how-to-play-aside {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+
+  z-index: 2;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#how-to-play-aside .how-to-play-container {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  background-color: var(--grey);
+
+  padding: 2rem;
+  gap: 3rem;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#how-to-play-aside .how-to-play-container h2 {
+  color: var(--darkYellow);
+}
+
+#how-to-play-aside .how-to-play-container ol {
+  color: #fff;
+  list-style-type: decimal;
+
+  width: 90%;
+  gap: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#how-to-play-aside .how-to-play-container #close-how-to-play {
+  cursor: pointer;
+  background-color: var(--red);
+  color: white;
+
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
+}
+
+#snake-container {
+  display: none;
+  gap: 3rem;
+  margin: auto 0;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+#snake-container h1 {
+  color: var(--red);
+}
+
+#end-game-aside {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.9);
+
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#end-game-aside span {
+  background-color: var(--black);
+  color: #fff;
+  text-align: center;
+
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+#end-game-aside .end-game-container {
+  background-color: var(--red);
+
+  width: 20rem;
+  height: 20rem;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#end-game-aside .end-game-container h2 {
+  color: #fff;
+  font-size: 2rem;
+}
+
+#end-game-aside #exit-to-snake-menu {
+  cursor: pointer;
+  background-color: var(--darkYellow);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+
+  padding: 1rem;
+  border-radius: 5px;
+
+  border: none;
+  text-align: center;
+
+  transition: all 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

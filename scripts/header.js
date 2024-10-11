@@ -1,5 +1,4 @@
-import { userLogged } from './global.js';
-
+import { userLogged } from "./global.js";
 
 const headerNotLogged = document.getElementById("header-not-logged");
 const headerLogged = document.getElementById("header-logged");

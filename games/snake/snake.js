@@ -45,13 +45,10 @@ let box; // Size of the snake and food
 // Depending on the viewport, the box size will be different
 if (window.innerWidth < 576 || window.innerHeight < 700) {
   box = 20;
-  console.log("1");
 } else if (window.innerWidth < 768 || window.innerHeight < 768) {
   box = 30;
-  console.log("2");
 } else {
   box = 30;
-  console.log("3");
 }
 
 canvas.width = 16 * box;
@@ -321,9 +318,10 @@ function endGame(isWin) {
 
     userData.balance -= betValue; // Subtract the bet value from the balance
 
+    // Show the end game screen
     endGameMessage1.textContent = "Você perdeu!";
     endGameMessage2.textContent = "Tente novamente!";
-    endGameAside.style.display = "flex"; // Show the end game screen
+    endGameAside.style.display = "flex";
   }
 
   updateLocalStorage(userData); // Update the user balance in localStorage
@@ -382,5 +380,5 @@ exitToSnakeMenu.addEventListener("click", () => {
 // Event listener to update the direction of the snake
 document.addEventListener("keydown", updateDirection);
 
-// Update the user balance in the DOMG
+// Update the user balance in the DOM
 updateUserBalance(userBalance);

@@ -29,6 +29,10 @@
   color: var(--darkYellow);
 }
 
+#deposit-background #deposit-form label {
+  color: #fff;
+}
+
 #deposit-background #deposit-form > div {
   display: flex;
   flex-direction: column;
