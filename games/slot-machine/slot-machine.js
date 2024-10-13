@@ -32,7 +32,7 @@ audioCoin.volume = 0.3;
 
 let doing = false; // Variable to control if the slot is spinning
 
-const numberOfFruits = 15; // Number of fruits in the slot machine
+const numberOfFruits = 9; // Number of fruits in the slot machine
 
 // Function to get the fruit name based on the index
 function getTileName(index) {
@@ -46,26 +46,14 @@ function getTileName(index) {
     case 4:
       return "bananas";
     case 5:
-      return "bananas";
+      return "grapes";
     case 6:
       return "grapes";
     case 7:
-      return "grapes";
+      return "orange";
     case 8:
-      return "grapes";
+      return "orange";
     case 9:
-      return "grapes";
-    case 10:
-      return "orange";
-    case 11:
-      return "orange";
-    case 12:
-      return "orange";
-    case 13:
-      return "avocado";
-    case 14:
-      return "avocado";
-    case 15:
       return "strawberry";
     default:
       return "fruits";
@@ -181,8 +169,14 @@ function testWin() {
 
 // Function to process the result
 function processResult(winned, betValue, userData, currentBalance) {
+  // Get the slot index
+  const slot1 = parseInt(document.getElementById("slot1").dataset.index);
+
+  // Get the fruit name
+  const fruit1 = getTileName(slot1);
+
   if (winned) {
-    switch (slot1) {
+    switch (fruit1) {
       case "bananas":
         userData.balance = currentBalance + betValue * 5;
         break;
@@ -192,14 +186,9 @@ function processResult(winned, betValue, userData, currentBalance) {
       case "orange":
         userData.balance = currentBalance + betValue * 25;
         break;
-      case "avocado":
-        userData.balance = currentBalance + betValue * 50;
-        break;
       case "strawberry":
         userData.balance = currentBalance + betValue * 100;
         break;
-      default:
-        userData.balance = currentBalance + betValue * 1;
     }
 
     audioCoin.play(); // Play coin sound when win
