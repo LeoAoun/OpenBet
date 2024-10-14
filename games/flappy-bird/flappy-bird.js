@@ -26,6 +26,13 @@ const ctx = canvas.getContext("2d");
 const img = new Image();
 img.src = "./assets/flappy-bird.png";
 
+// Audio elements
+const musicAudio = document.getElementById("audio-music");
+const swingAudio = document.getElementById("audio-swing");
+const pointAudio = document.getElementById("audio-point");
+const hitAudio = document.getElementById("audio-hit");
+const dieAudio = document.getElementById("audio-die");
+
 // End game elements
 const endGameAside = document.getElementById("end-game-aside");
 const endGameMessage1 = document.getElementById("end-game-message-1");
@@ -33,6 +40,13 @@ const endGameMessage2 = document.getElementById("end-game-message-2");
 const exitToFlappyBirdMenu = document.getElementById(
   "exit-to-flappy-bird-menu"
 );
+
+// Audio settings
+musicAudio.volume = 0.3;
+swingAudio.volume = 0.3;
+pointAudio.volume = 0.3;
+hitAudio.volume = 0.3;
+dieAudio.volume = 0.3;
 
 // Game variables
 let gamePlaying = false;
@@ -131,6 +145,7 @@ const drawPipes = () => {
 
     // If the pipe has moved out of the screen
     if (pipe[0] <= -pipeWidth) {
+      pointAudio.play();
       currentScore++;
       bestScore = Math.max(bestScore, currentScore);
       if (currentScore >= pipeInput.value) {
@@ -150,7 +165,9 @@ const drawPipes = () => {
         pipe[1] > flyHeight || pipe[1] + pipeGap < flyHeight + birdSize.height,
       ].every(Boolean)
     ) {
+      hitAudio.play();
       wonGame(false);
+      dieAudio.play();
     }
   });
 };
@@ -176,6 +193,7 @@ const drawBird = () => {
     flight += gravity;
     flyHeight = Math.min(flyHeight + flight, canvas.height - birdSize.height);
   } else {
+    swingAudio.pause();
     flyHeight = canvas.height / 2 - birdSize.height / 2;
     ctx.font = "1rem 'Press Start 2P', cursive";
     ctx.fillText("Clique para jogar", 80, 365);
@@ -206,8 +224,9 @@ function startGameAfterBet() {
 const render = () => {
   index++;
   drawBackground();
-
+  
   if (gamePlaying) {
+    musicAudio.play();
     drawPipes();
   }
 
@@ -222,6 +241,9 @@ const render = () => {
 };
 
 const wonGame = (winned) => {
+  musicAudio.pause(); // Pause the music
+  musicAudio.currentTime = 0; // Reset the music time
+
   let betValue = betInput.value.replace(/\D/g, "");
   betValue = parseInt(betValue, 10);
 
@@ -292,10 +314,13 @@ exitToFlappyBirdMenu.addEventListener("click", () => {
 canvas.addEventListener("click", () => (gamePlaying = true));
 
 // Control the bird with click and space bar
-window.onclick = () => (flight = jump);
-
+window.onclick = () => {
+  swingAudio.play();
+  flight = jump;
+};
 window.onkeydown = (e) => {
   if (e.keyCode === 32) {
+    swingAudio.play();
     flight = jump;
   }
 };

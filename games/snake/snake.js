@@ -31,13 +31,17 @@ const endGameMessage2 = document.getElementById("end-game-message-2");
 const exitToSnakeMenu = document.getElementById("exit-to-snake-menu");
 
 // Audios
+const audioMusic = document.getElementById("audio-music");
 const audioFood = document.getElementById("audio-food");
 const audioWin = document.getElementById("audio-win");
+const audioHit = document.getElementById("audio-hit");
 const audioLose = document.getElementById("audio-lose");
 
 // Volume of audios
+audioMusic.volume = 0.3;
 audioFood.volume = 0.3;
 audioWin.volume = 0.3;
+audioHit.volume = 0.3;
 audioLose.volume = 0.3;
 
 let box; // Size of the snake and food
@@ -268,6 +272,7 @@ function startGameAfterBet() {
     snakeContainer.style.display = "flex"; // Show the game screen
 
     gameSpeed = 100; // Reset the speed of the game
+    audioMusic.play(); // Play the game music
     game = setInterval(startGame, gameSpeed); // Start the game
   } else {
     alert("Saldo insuficiente.");
@@ -297,13 +302,15 @@ function getValidFoodPosition() {
 
 // Function to end the game
 function endGame(isWin) {
+  audioMusic.pause(); // Pause the game music
+  audioMusic.currentTime = 0; // Reset the game music
   clearInterval(game);
 
   let userData = userLogged();
   if (isWin) {
     //Multiplier increases by 1% for each food eaten
     const multiplier = 1 + foodsEaten * 0.01;
-    const winnings = betValue * multiplier;
+    const winnings = betValue * multiplier - betValue;
     userData.balance += winnings; // Add the winnings to the balance
 
     audioWin.play(); // Play the win sound
@@ -314,6 +321,7 @@ function endGame(isWin) {
       .toLocaleString("pt-BR")}!`;
     endGameAside.style.display = "flex"; // Show the end game screen
   } else {
+    audioHit.play(); // Play the hit sound
     audioLose.play(); // Play the lose sound
 
     userData.balance -= betValue; // Subtract the bet value from the balance
