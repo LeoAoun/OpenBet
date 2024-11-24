@@ -22,8 +22,7 @@ depositAmount.addEventListener("input", function (e) {
   // Remove everything that is not a number
   let value = e.target.value.replace(/\D/g, "");
   // Add the currency symbol and format the number
-  e.target.value =
-    "R$ " + (value ? parseInt(value, 10).toLocaleString("pt-BR") : "0");
+  e.target.value = "R$ " + (value ? parseInt(value, 10).toLocaleString("pt-BR") : "0");
 });
 
 // Handle the deposit confirmation
@@ -51,11 +50,10 @@ depositForm.addEventListener("submit", (e) => {
     // Clear the input field
     depositAmount.value = "";
 
-    alert(`Depósito de R$ ${depositValue.toFixed(2)} efetuado com sucesso!`);
-
+    toastr.error(`Depósito de R$ ${depositValue.toFixed(2)} efetuado com sucesso!`);
     // Close the modal
     depositBackground.style.display = "none";
   } else {
-    alert("Valor de depósito inválido");
+    toastr.error("Valor de depósito inválido!");
   }
 });

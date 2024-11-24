@@ -1,8 +1,4 @@
-import {
-  userLogged,
-  updateUserBalance,
-  updateLocalStorage,
-} from "../../scripts/global.js";
+import { userLogged, updateUserBalance, updateLocalStorage } from "../../scripts/global.js";
 
 // DOM elements
 const userBalance = document.getElementById("user-balance");
@@ -37,9 +33,7 @@ const dieAudio = document.getElementById("audio-die");
 const endGameAside = document.getElementById("end-game-aside");
 const endGameMessage1 = document.getElementById("end-game-message-1");
 const endGameMessage2 = document.getElementById("end-game-message-2");
-const exitToFlappyBirdMenu = document.getElementById(
-  "exit-to-flappy-bird-menu"
-);
+const exitToFlappyBirdMenu = document.getElementById("exit-to-flappy-bird-menu");
 
 // Audio settings
 musicAudio.volume = 0.3;
@@ -71,8 +65,7 @@ const pipeWidth = 78;
 const pipeGap = 250;
 
 // Generate random pipe Y position
-const getPipeY = () =>
-  Math.random() * (canvas.height - (pipeGap + pipeWidth)) + pipeWidth;
+const getPipeY = () => Math.random() * (canvas.height - (pipeGap + pipeWidth)) + pipeWidth;
 
 // Reset the game
 const setup = () => {
@@ -118,17 +111,7 @@ const drawPipes = () => {
     pipe[0] -= speed;
 
     // Upper pipe
-    ctx.drawImage(
-      img,
-      432,
-      588 - pipe[1],
-      pipeWidth,
-      pipe[1],
-      pipe[0],
-      0,
-      pipeWidth,
-      pipe[1]
-    );
+    ctx.drawImage(img, 432, 588 - pipe[1], pipeWidth, pipe[1], pipe[0], 0, pipeWidth, pipe[1]);
 
     // Lower pipe
     ctx.drawImage(
@@ -151,10 +134,7 @@ const drawPipes = () => {
       if (currentScore >= pipeInput.value) {
         wonGame(true);
       }
-      pipes = [
-        ...pipes.slice(1),
-        [pipes[pipes.length - 1][0] + pipeGap + pipeWidth, getPipeY()],
-      ];
+      pipes = [...pipes.slice(1), [pipes[pipes.length - 1][0] + pipeGap + pipeWidth, getPipeY()]];
     }
 
     // Verify if the bird hits the pipe
@@ -206,17 +186,17 @@ function startGameAfterBet() {
   betValue = parseInt(betValue, 10);
 
   if (betValue === 0 || isNaN(betValue) || pipeInput.value === "") {
-    alert("Insira um valor para apostar!");
+    toastr.error("Insira um valor válido para a aposta");
     return;
   } else if (pipeInput.value < 3) {
-    alert("Insira um valor maior ou igual a 3 para o número de canos!");
+    toastr.error("A quantidade mínima de canos é 3");
     return;
   } else if (betValue <= userData.balance) {
     betContainer.style.display = "none"; // Hide the bet screen
     flappyBirdContainer.style.display = "flex"; // Show the game screen
     setup();
   } else {
-    alert("Saldo insuficiente.");
+    toastr.error("Saldo insuficiente para a aposta");
   }
 }
 
@@ -224,7 +204,7 @@ function startGameAfterBet() {
 const render = () => {
   index++;
   drawBackground();
-  
+
   if (gamePlaying) {
     musicAudio.play();
     drawPipes();
@@ -233,9 +213,7 @@ const render = () => {
   drawBird();
 
   document.getElementById("bestScore").textContent = `Melhor: ${bestScore}`;
-  document.getElementById(
-    "currentScore"
-  ).textContent = `Atual: ${currentScore}`;
+  document.getElementById("currentScore").textContent = `Atual: ${currentScore}`;
 
   window.requestAnimationFrame(render);
 };
@@ -280,8 +258,7 @@ exitToHome.addEventListener("click", () => {
 // Parse the bet input to currency format
 betInput.addEventListener("input", function (e) {
   let value = e.target.value.replace(/\D/g, "");
-  e.target.value =
-    "R$ " + (value ? parseInt(value, 10).toLocaleString("pt-BR") : "0");
+  e.target.value = "R$ " + (value ? parseInt(value, 10).toLocaleString("pt-BR") : "0");
 });
 
 // Parse the pipe input to integer format

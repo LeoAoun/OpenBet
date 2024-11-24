@@ -20,7 +20,7 @@ loginForm.addEventListener("submit", (e) => {
 
   // Check if the user exists and the password is correct
   if (!user || user.password !== hashedPassword) {
-    alert("Nome de usuário ou senha incorretos");
+    toastr.error("Usuário ou senha incorretos!");
     return;
   }
 
@@ -34,8 +34,10 @@ loginForm.addEventListener("submit", (e) => {
   localStorage.setItem("userLogged", JSON.stringify(userVisibleData));
 
   // If credentials are correct
-  alert("Login bem-sucedido!");
+  toastr.success("Login efetuado com sucesso!");
 
-  // Redirect to the home page
-  window.location.href = "home.html";
+  // Redirect to the home page after 2 seconds
+  setTimeout(() => {
+    window.location.href = "home.html";
+  }, 2000);
 });

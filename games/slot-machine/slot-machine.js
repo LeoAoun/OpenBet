@@ -71,7 +71,7 @@ function doSlot() {
   betValue = parseInt(betValue, 10); // Parse the bet value to integer
 
   if (betValue === 0 || isNaN(betValue)) {
-    alert("Insira um valor para apostar!");
+    toastr.error("Insira um valor válido!");
     return;
   } else if (betValue <= currentBalance) {
     doing = true;
@@ -134,7 +134,7 @@ function doSlot() {
       slotTile.src = tileImage;
     }
   } else {
-    alert("Saldo insuficiente!");
+    toastr.error("Saldo insuficiente para a aposta");
     return;
   }
 

@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="../../assets/images/favicon.png"
-      type="image/png"
-    />
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" type="image/png" />
     <link rel="stylesheet" href="flappy-bird.css" />
     <title>Flappy Bird</title>
   </head>
@@ -36,28 +32,13 @@
       <div class="how-to-play-container">
         <h2>Como jogar:</h2>
         <ol>
-          <li>
-            Use a barra de espaço ou clique na tela para fazer o pássaro pular
-          </li>
-          <li>
-            O objetivo é ultrapassar a quantidade de canos que você escolher
-          </li>
-          <li>
-            A cada cano que o pássaro passar, a velocidade dele irá aumentar
-          </li>
+          <li>Use a barra de espaço ou clique na tela para fazer o pássaro pular</li>
+          <li>O objetivo é ultrapassar a quantidade de canos que você escolher</li>
+          <li>A cada cano que o pássaro passar, a velocidade dele irá aumentar</li>
           <li>Se o pássaro bater em um cano, você perde!</li>
-          <li>
-            Se o pássaro ultrapassar a quantidade de canos escolhida, você
-            vence!
-          </li>
-          <li>
-            Cada cano ultrapassado aumenta o multiplicador do valor da sua
-            aposta em 0.01x
-          </li>
-          <li>
-            Exemplo: se o pássaro ultrapassar 3 canos, sua aposta será
-            multiplicada em 0.03x
-          </li>
+          <li>Se o pássaro ultrapassar a quantidade de canos escolhida, você vence!</li>
+          <li>Cada cano ultrapassado aumenta o multiplicador do valor da sua aposta em 0.01x</li>
+          <li>Exemplo: se o pássaro ultrapassar 3 canos, sua aposta será multiplicada em 0.03x</li>
         </ol>
         <button id="close-how-to-play">Fechar</button>
       </div>
@@ -87,6 +68,7 @@
     <audio id="audio-hit" src="./assets/sounds/hit.wav"></audio>
     <audio id="audio-die" src="./assets/sounds/die.wav"></audio>
 
+    <script src="../../scripts/toaster.js"></script>
     <script type="module" defer src="flappy-bird.js"></script>
   </body>
 </html>

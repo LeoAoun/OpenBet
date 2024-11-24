@@ -1,8 +1,4 @@
-import {
-  userLogged,
-  updateLocalStorage,
-  updateUserBalance,
-} from "../../scripts/global.js";
+import { userLogged, updateLocalStorage, updateUserBalance } from "../../scripts/global.js";
 
 // DOM elements
 const userBalance = document.getElementById("user-balance");
@@ -89,65 +85,17 @@ function createSnake() {
       context.fillStyle = "#000";
       context.beginPath();
       if (direction === "right") {
-        context.arc(
-          x + headSize * 0.75,
-          y + headSize * 0.25,
-          eyeSize,
-          0,
-          Math.PI * 2
-        ); // Right eye
-        context.arc(
-          x + headSize * 0.75,
-          y + headSize * 0.75,
-          eyeSize,
-          0,
-          Math.PI * 2
-        ); // Left eye
+        context.arc(x + headSize * 0.75, y + headSize * 0.25, eyeSize, 0, Math.PI * 2); // Right eye
+        context.arc(x + headSize * 0.75, y + headSize * 0.75, eyeSize, 0, Math.PI * 2); // Left eye
       } else if (direction === "left") {
-        context.arc(
-          x + headSize * 0.25,
-          y + headSize * 0.25,
-          eyeSize,
-          0,
-          Math.PI * 2
-        ); // Right eye
-        context.arc(
-          x + headSize * 0.25,
-          y + headSize * 0.75,
-          eyeSize,
-          0,
-          Math.PI * 2
-        ); // Left eye
+        context.arc(x + headSize * 0.25, y + headSize * 0.25, eyeSize, 0, Math.PI * 2); // Right eye
+        context.arc(x + headSize * 0.25, y + headSize * 0.75, eyeSize, 0, Math.PI * 2); // Left eye
       } else if (direction === "up") {
-        context.arc(
-          x + headSize * 0.25,
-          y + headSize * 0.25,
-          eyeSize,
-          0,
-          Math.PI * 2
-        ); // Left eye
-        context.arc(
-          x + headSize * 0.75,
-          y + headSize * 0.25,
-          eyeSize,
-          0,
-          Math.PI * 2
-        ); // Right eye
+        context.arc(x + headSize * 0.25, y + headSize * 0.25, eyeSize, 0, Math.PI * 2); // Left eye
+        context.arc(x + headSize * 0.75, y + headSize * 0.25, eyeSize, 0, Math.PI * 2); // Right eye
       } else if (direction === "down") {
-        context.arc(
-          x + headSize * 0.25,
-          y + headSize * 0.75,
-          eyeSize,
-          0,
-          Math.PI * 2
-        ); // Left eye
-        context.arc(
-          x + headSize * 0.75,
-          y + headSize * 0.75,
-          eyeSize,
-          0,
-          Math.PI * 2
-        ); // Right eye
+        context.arc(x + headSize * 0.25, y + headSize * 0.75, eyeSize, 0, Math.PI * 2); // Left eye
+        context.arc(x + headSize * 0.75, y + headSize * 0.75, eyeSize, 0, Math.PI * 2); // Right eye
       }
       context.fill();
     } else {
@@ -188,10 +136,7 @@ function updateDirection({ keyCode }) {
     up: "down",
     down: "up",
   };
-  if (
-    directions[keyCode] &&
-    direction !== oppositeDirections[directions[keyCode]]
-  ) {
+  if (directions[keyCode] && direction !== oppositeDirections[directions[keyCode]]) {
     direction = directions[keyCode];
     canChangeDirection = false; // Prevent the player from changing the direction again
   }
@@ -200,12 +145,7 @@ function updateDirection({ keyCode }) {
 // Function to start the game
 function startGame() {
   // Verify if the snake hit the wall or itself
-  if (
-    snake[0].x >= 16 * box ||
-    snake[0].x < 0 ||
-    snake[0].y >= 16 * box ||
-    snake[0].y < 0
-  ) {
+  if (snake[0].x >= 16 * box || snake[0].x < 0 || snake[0].y >= 16 * box || snake[0].y < 0) {
     endGame(false); // Indicate that the player lost
     return; // Stop the function
   }
@@ -262,7 +202,7 @@ function startGameAfterBet() {
   betValue = parseInt(betValue, 10); // Parse the bet value to integer
 
   if (betValue === 0 || isNaN(betValue) || foodInput.value === "") {
-    alert("Insira um valor para apostar!");
+    toastr.error("Insira um valor válido!");
     return;
   } else if (betValue <= currentBalance) {
     // Define the number of foods required to win
@@ -275,7 +215,7 @@ function startGameAfterBet() {
     audioMusic.play(); // Play the game music
     game = setInterval(startGame, gameSpeed); // Start the game
   } else {
-    alert("Saldo insuficiente.");
+    toastr.error("Saldo insuficiente para a aposta!");
   }
 }
 
@@ -294,9 +234,7 @@ function getValidFoodPosition() {
   let newFood;
   do {
     newFood = getRandomFoodPosition();
-  } while (
-    snake.some((segment) => segment.x === newFood.x && segment.y === newFood.y)
-  );
+  } while (snake.some((segment) => segment.x === newFood.x && segment.y === newFood.y));
   return newFood;
 }
 
@@ -353,8 +291,7 @@ exitToHome.addEventListener("click", () => {
 // Parse the bet input to currency format
 betInput.addEventListener("input", function (e) {
   let value = e.target.value.replace(/\D/g, "");
-  e.target.value =
-    "R$ " + (value ? parseInt(value, 10).toLocaleString("pt-BR") : "0");
+  e.target.value = "R$ " + (value ? parseInt(value, 10).toLocaleString("pt-BR") : "0");
 });
 
 // Parse the food input to integer format
