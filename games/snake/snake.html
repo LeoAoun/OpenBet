@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="shortcut icon"
-      href="../../assets/images/favicon.png"
-      type="image/png"
-    />
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" type="image/png" />
     <link rel="stylesheet" href="./snake.css" />
     <title>Snake Game</title>
   </head>
@@ -29,7 +25,7 @@
       <input id="food-input" placeholder="5" type="number" min="5" />
       <div class="buttons">
         <button id="start-game-button">Iniciar Jogo</button>
-        <button id="open-how-to-play">Como jogar:</button>
+        <button id="open-how-to-play">Como jogar</button>
       </div>
     </main>
 
@@ -37,25 +33,19 @@
       <div class="how-to-play-container">
         <h2>Como jogar</h2>
         <ol>
-          <li>Use as setas do teclado para mover a cobra</li>
+          <li>Use as setas do teclado (ou WASD) para mover a cobra</li>
           <li>O objetivo é comer a quantidade de comidas que você escolher</li>
-          <li>
-            A cada comida que a cobra comer, ela crescerá e a velocidade
-            aumentará
-          </li>
+          <li>A cada comida que a cobra comer, ela crescerá e a velocidade aumentará</li>
           <li>Se a cobra bater nas paredes ou em si mesma, você perde!</li>
           <li>Se você atingir o número de comidas escolhido, você vence!</li>
-          <li>
-            Cada comida aumenta o multiplicador do valor da sua aposta em 0.01x
-          </li>
-          <li>
-            Exemplo: se a cobra comer 5 comidas, sua aposta será multiplicada em
-            0.05x
-          </li>
+          <li>Cada comida aumenta o multiplicador do valor da sua aposta em 0.01x</li>
+          <li>Exemplo: se a cobra comer 5 comidas, sua aposta será multiplicada em 0.05x</li>
         </ol>
         <button id="close-how-to-play">Fechar</button>
       </div>
     </aside>
+
+    <aside id="countdown" style="display: none">3</aside>
 
     <main id="snake-container">
       <h1>Snake Game!</h1>

@@ -125,10 +125,14 @@ function updateDirection({ keyCode }) {
   if (!canChangeDirection) return;
 
   const directions = {
-    37: "left",
-    38: "up",
-    39: "right",
-    40: "down",
+    37: "left", // Arrow Left
+    38: "up", // Arrow Up
+    39: "right", // Arrow Right
+    40: "down", // Arrow Down
+    65: "left", // A
+    87: "up", // W
+    68: "right", // D
+    83: "down", // S
   };
   const oppositeDirections = {
     left: "right",
