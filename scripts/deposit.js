@@ -50,7 +50,7 @@ depositForm.addEventListener("submit", (e) => {
     // Clear the input field
     depositAmount.value = "";
 
-    toastr.error(`Depósito de R$ ${depositValue.toFixed(2)} efetuado com sucesso!`);
+    toastr.success(`Depósito de R$ ${depositValue.toFixed(2)} efetuado com sucesso!`);
     // Close the modal
     depositBackground.style.display = "none";
   } else {

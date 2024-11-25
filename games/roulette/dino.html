@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="dino.css" />
+    <title>Dino Game</title>
+  </head>
+  <body>
+    <header>
+      <h1>OpenBet</h1>
+      <div>
+        <span id="user-balance"></span>
+        <button id="exit-to-home">Voltar</button>
+      </div>
+    </header>
+
+    <main id="bet-container">
+      <h2>Dino Game</h2>
+      <label for="bet-input">Insira sua aposta:</label>
+      <input placeholder="R$ 0.00" type="text" id="bet-input" />
+      <label for="km-input">Quantos Quilômetros? (Mínimo 1)</label>
+      <input id="km-input" placeholder="1" type="number" min="1" />
+      <div class="buttons">
+        <button id="start-game-button">Iniciar Jogo</button>
+        <button id="open-how-to-play">Como jogar</button>
+      </div>
+    </main>
+
+    <aside id="how-to-play-aside">
+      <div class="how-to-play-container">
+        <h2>Como jogar</h2>
+        <ol>
+          <li>Use o espaço do teclado para pular</li>
+          <li>O objetivo é atingir a quantidade de quilômetros que você escolher</li>
+          <li>A metro passado, a velocidade do Dino aumentará</li>
+          <li>Se o Dino bater em algum obstáculo, você perde!</li>
+          <li>Se você atingir o quilômetro escolhido, você vence!</li>
+          <li>Cada quilômetro aumenta o multiplicador do valor da sua aposta em 0.01x</li>
+          <li>Exemplo: se escolher atingir 5 quilômetros, sua aposta será multiplicada em 0.05x</li>
+        </ol>
+        <button id="close-how-to-play">Fechar</button>
+      </div>
+    </aside>
+
+    <aside id="countdown">3</aside>
+
+    <main id="board-container">
+      <h1>Dino Game</h1>
+      <canvas id="board"></canvas>
+    </main>
+
+    <aside id="end-game-aside">
+      <div class="end-game-container">
+        <h2>Fim de Jogo!</h2>
+        <span id="end-game-message-1"></span>
+        <span id="end-game-message-2"></span>
+        <button id="exit-to-snake-menu">Sair</button>
+      </div>
+    </aside>
+
+    <script src="../../scripts/toaster.js"></script>
+    <script type="module" defer src="dino.js"></script>
+  </body>
+</html>

@@ -11,6 +11,9 @@ const foodInput = document.getElementById("food-input");
 const startGameBtn = document.getElementById("start-game-button");
 const openHowToPlay = document.getElementById("open-how-to-play");
 
+// Countdown
+const countdownAside = document.getElementById("countdown");
+
 // How to play aside
 const howToPlayAside = document.getElementById("how-to-play-aside");
 const closeHowToPlay = document.getElementById("close-how-to-play");
@@ -197,6 +200,27 @@ function increaseSpeed() {
   game = setInterval(startGame, gameSpeed);
 }
 
+// Function to start the countdown before the game starts
+function countdown(callback) {
+  let count = 3;
+  countdownAside.style.display = "flex";
+  countdownAside.textContent = count;
+
+  let countdownInterval = setInterval(() => {
+    count--;
+    countdownAside.textContent = count;
+
+    if (count === 0) {
+      clearInterval(countdownInterval);
+      countdownAside.style.display = "none";
+
+      if (typeof callback === "function") {
+        callback(); // Start the game
+      }
+    }
+  }, 1000);
+}
+
 // Function to start the game after the user bets
 function startGameAfterBet() {
   let userData = userLogged();
@@ -215,9 +239,12 @@ function startGameAfterBet() {
     betContainer.style.display = "none"; // Hide the bet screen
     snakeContainer.style.display = "flex"; // Show the game screen
 
-    gameSpeed = 100; // Reset the speed of the game
-    audioMusic.play(); // Play the game music
-    game = setInterval(startGame, gameSpeed); // Start the game
+    // Start the countdown before the game starts
+    countdown(() => {
+      gameSpeed = 100; // Reset the speed of the game
+      audioMusic.play(); // Play the game music
+      game = setInterval(startGame, gameSpeed); // Start the game
+    });
   } else {
     toastr.error("Saldo insuficiente para a aposta!");
   }

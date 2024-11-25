@@ -264,7 +264,7 @@ betInput.addEventListener("input", function (e) {
 // Parse the pipe input to integer format
 pipeInput.addEventListener("input", function (e) {
   e.target.value = e.target.value.replace(/\D/g, "");
-  // Limit the number of foods required to win
+  // Limit the number of pipes required to win
   e.target.value = Math.max(e.target.value, 3);
 });
 

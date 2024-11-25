@@ -3,6 +3,7 @@
 @import url(../../styles/configs/fonts.css);
 
 body {
+  user-select: none;
   font-family: "Poppins", sans-serif;
   background-color: var(--darkGrey);
 
@@ -19,7 +20,7 @@ header {
   text-align: center;
 
   width: 100%;
-  gap: 2rem;
+  gap: 1.5rem;
   padding: 1rem 0;
 
   display: flex;
@@ -30,7 +31,7 @@ header {
 
 header h1 {
   color: #f39c12;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
@@ -42,7 +43,7 @@ header > div {
 
 header > div #user-balance {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 header #exit-to-home {
@@ -52,7 +53,7 @@ header #exit-to-home {
   font-size: 1rem;
   font-weight: 600;
 
-  padding: 1rem;
+  padding: 0.8rem;
   border-radius: 5px;
 
   border: none;
@@ -108,7 +109,7 @@ header #exit-to-home {
   color: var(--lightGrey);
 }
 
-#bet-container #food-input {
+#bet-container #km-input {
   background-color: var(--darkGrey);
   color: #fff;
   outline: none;
@@ -249,17 +250,24 @@ header #exit-to-home {
   transform: translate(-50%, -50%);
 }
 
-#snake-container {
+#board-container {
   display: none;
-  gap: 3rem;
-  margin: auto 0;
-
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
+  margin: auto 0;
 }
 
-#snake-container h1 {
-  color: var(--red);
+#board-container h1 {
+  font-family: "Press Start 2P", cursive;
+  color: var(--darkYellow);
+  font-size: 1.5rem;
+}
+
+#board {
+  background-color: #d3d3d3;
+  border-radius: 0.5rem;
+  border-bottom: 1px solid black;
 }
 
 #end-game-aside {
